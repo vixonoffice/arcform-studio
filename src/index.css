@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 14% 97%;
+    --background-secondary: 40 7% 93%;
+    --foreground: 43 7% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 43 7% 10%;
+    --card-hover: 40 14% 98%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 43 7% 10%;
+
+    --primary: 27 55% 46%;
+    --primary-foreground: 0 0% 100%;
+    --primary-dark: 27 55% 34%;
+    --primary-light: 27 50% 62%;
+
+    --secondary: 40 7% 93%;
+    --secondary-foreground: 43 7% 10%;
+
+    --muted: 40 7% 93%;
+    --muted-foreground: 30 7% 42%;
+
+    --accent: 0 0% 17%;
+    --accent-foreground: 0 0% 100%;
+    --accent-stone: 25 4% 61%;
+
+    --success: 148 24% 40%;
+    --success-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 34 11% 87%;
+    --input: 34 11% 87%;
+    --ring: 27 55% 46%;
+
+    --radius: 4px;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 27 55% 46%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 400;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.02em;
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: 'Bebas Neue', sans-serif;
+  }
+
+  .font-serif {
+    font-family: 'Libre Baskerville', serif;
+  }
+
+  .font-body {
+    font-family: 'IBM Plex Sans', sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .section-label {
+    @apply font-mono text-xs tracking-[4px] uppercase;
+    color: hsl(var(--primary));
+  }
+
+  .text-stroke {
+    -webkit-text-stroke: 2px currentColor;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .glass-bar {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .card-architectural {
+    @apply bg-card border border-border rounded-sm transition-all duration-300;
+  }
+
+  .card-architectural:hover {
+    border-left: 3px solid hsl(var(--primary));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(26, 25, 23, 0.08);
+  }
+
+  .blueprint-grid {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .copper-gradient {
+    background: linear-gradient(135deg, hsl(27, 55%, 46%) 0%, hsl(27, 55%, 34%) 100%);
+  }
+
+  .hero-overlay {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%);
+  }
+
+  /* SVG line draw animation */
+  .line-draw {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw 2s ease-out forwards;
+  }
+
+  @keyframes draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes count-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in-up-delay-1 {
+    animation: fade-in-up 0.6s ease-out 0.2s forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-in-up-delay-2 {
+    animation: fade-in-up 0.6s ease-out 0.4s forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-in-up-delay-3 {
+    animation: fade-in-up 0.6s ease-out 0.6s forwards;
+    opacity: 0;
+  }
+
+  /* Scroll indicator bounce */
+  @keyframes bounce-down {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+
+  .animate-bounce-down {
+    animation: bounce-down 2s ease-in-out infinite;
+  }
+}
