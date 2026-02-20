@@ -33,6 +33,12 @@ const Navbar = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  // Body scroll lock when mobile menu open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileOpen]);
+
   const navBg = scrolled || !isHome
     ? 'bg-card/95 backdrop-blur-md border-b-2 border-primary shadow-sm'
     : 'bg-transparent';
@@ -51,7 +57,11 @@ const Navbar = () => {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBg}`}>
       <div className="max-w-site mx-auto px-6 flex items-center justify-between h-20">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3">
+        <Link
+          to="/"
+          className="flex items-center gap-3"
+          onClick={() => { if (location.pathname === '/') window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+        >
           <span className={`font-display text-[32px] leading-none tracking-wide ${textColor}`}>
             ARCFORM
           </span>
@@ -113,7 +123,6 @@ const Navbar = () => {
 
         {/* Right side */}
         <div className="hidden lg:flex items-center gap-5">
-          {/* Language toggle */}
           <div className="flex items-center gap-1 font-mono text-xs">
             <button
               onClick={() => setLang('ro')}
