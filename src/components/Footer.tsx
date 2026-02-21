@@ -85,10 +85,14 @@ const Footer = () => {
         {/* Bottom */}
         <div className="mt-6 pt-6 border-t border-accent-foreground/10 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-accent-foreground/30 font-body">
           <p>© 2026 ArcForm SRL | CUI: RO12345678</p>
-          <div className="flex gap-4">
+          <div className="flex gap-4 items-center">
             <a href="#" className="hover:text-primary transition-colors">{t('footer.terms')}</a>
             <a href="#" className="hover:text-primary transition-colors">{t('footer.privacy')}</a>
             <a href="#" className="hover:text-primary transition-colors">Sitemap</a>
+            <span className="opacity-40">·</span>
+            <a href="https://vixonlab.ro" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+              Site realizat de Vixon Lab
+            </a>
           </div>
         </div>
       </div>
