@@ -60,7 +60,7 @@ const Navbar = () => {
         <Link
           to="/"
           className="flex items-center gap-3"
-          onClick={() => { if (location.pathname === '/') window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+          onClick={() => { setMobileOpen(false); if (location.pathname === '/') window.scrollTo({ top: 0, behavior: 'instant' }); }}
         >
           <span className={`font-display text-[32px] leading-none tracking-wide ${textColor}`}>
             ARCFORM
